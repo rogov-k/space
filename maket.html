@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      
+    	.circle {
+        width: 320px;
+        height: 320px;
+        border: 1px solid #d7d7d7;
+        border-radius: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+      }
+
+      .horisont {
+        width: 320px;
+    		height: 238px;
+        border: 1px solid #d7d7d7;
+        border-radius: 100%;
+        position: absolute;
+        top: 0;
+        left: -1px;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        
+      }
+
+      .vertical {
+        width: 320px;
+    		height: 238px;
+        border: 1px solid #d7d7d7;
+        border-radius: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        transform: rotate(-60deg);
+      }
+
+      .middle {
+        width: 320px;
+    		height: 238px;
+        border: 1px solid #d7d7d7;
+        border-radius: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        transform: rotate(60deg);
+      }
+
+      .os-x {
+        height: 1px;
+        width: 480px;
+        position: absolute;
+        background-color: #f26363;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        transform: rotate(30deg);
+      }
+
+      .os-y {
+        height: 1px;
+        width: 480px;
+        position: absolute;
+        background-color: #f26363;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        transform: rotate(-90deg);
+      }
+
+      .os-z {
+        height: 1px;
+        width: 480px;
+        position: absolute;
+        background-color: #f26363;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0px;
+        margin: auto;
+        transform: rotate(150deg);
+      }
+
+      .os-x:after,
+      .os-y:after,
+      .os-z:after {
+        content: '';
+        display: block;
+        margin: -3px 0 0 auto;
+        width: 6px;
+        height: 6px;
+        border-top: 1px solid #d7d7d7;
+        border-right: 1px solid #d7d7d7;
+        transform: rotate(45deg);
+      }
+/*
+      .orbit {
+        width: 600px;
+        height: 120px;
+        border: 1px dotted #f26363;
+        border-radius: 100%;
+        position: absolute;
+        top: 0px;
+        left: calc(50% - 270px);
+        right: auto;
+        bottom: 0;
+        margin: auto;
+        transform: rotate(-22deg);
+        transform-origin: calc(50% - 30px) 50%;
+      }
+*/
+      .wrapper--orbit {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      .line-x {
+        height: 1px;
+        width: 100%;
+        position: absolute;
+        background-color: #f26363;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+      }
+
+      .line-y {
+        height: 100%;
+        width: 1px;
+        position: absolute;
+        background-color: #f26363;
+        top: 0px;
+        left: -60px;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+      }
+      
+      .hl-1 {
+        height: 300px;
+        width: 1px;
+        position: absolute;
+        background-color: #f26363;
+        top: -150px;
+        left: 260px;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        transform: rotate(-60deg);
+      }
+      
+      .hl-2 {
+        height: 300px;
+        width: 1px;
+        position: absolute;
+        background-color: #f26363;
+        top: -150px;
+        left: -260px;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        transform: rotate(60deg);
+      }
+      
+      .hl-3 {
+        height: 300px;
+        width: 1px;
+        position: absolute;
+        background-color: #f26363;
+        top: 150px;
+        left: -260px;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        transform: rotate(-60deg);
+      }
+      
+      .hl-4 {
+        height: 300px;
+        width: 1px;
+        position: absolute;
+        background-color: #f26363;
+        top: 150px;
+        left: 260px;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        transform: rotate(60deg);
+      }
+      
+      .vl-1 {
+        height: 300px;
+        width: 1px;
+        position: absolute;
+        background-color: #f26363;
+        top: -150px;
+        left: 260px;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        transform: rotate(0deg);
+      }
+      
+      .vl-2 {
+        height: 300px;
+        width: 1px;
+        position: absolute;
+        background-color: #f26363;
+        top: -300px;
+    		left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        transform: rotate(60deg);
+      }
+      
+      .vl-3 {
+        height: 300px;
+        width: 1px;
+        position: absolute;
+        background-color: #f26363;
+        top: 150px;
+        left: -260px;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        transform: rotate(0deg);
+      }
+      
+      .vl-4 {
+        height: 300px;
+        width: 1px;
+        position: absolute;
+        background-color: #f26363;
+        top: 300px;
+        left: 0px;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        transform: rotate(60deg);
+      }
+      
+      .ml-1 {
+        height: 300px;
+        width: 1px;
+        position: absolute;
+        background-color: #f26363;
+        top: 150px;
+        left: 260px;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        transform: rotate(0deg);
+      }
+      
+      .ml-2 {
+        height: 300px;
+        width: 1px;
+        position: absolute;
+        background-color: #f26363;
+        top: -300px;
+    		left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        transform: rotate(-60deg);
+      }
+      
+      .ml-3 {
+        height: 300px;
+        width: 1px;
+        position: absolute;
+        background-color: #f26363;
+        top: -150px;
+        left: -260px;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        transform: rotate(0deg);
+      }
+      
+      .ml-4 {
+        height: 300px;
+        width: 1px;
+        position: absolute;
+        background-color: #f26363;
+        top: 300px;
+        left: 0px;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        transform: rotate(-60deg);
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="circle">
+      <div class="horisont"></div>
+      <div class="vertical"></div>
+      <div class="middle"></div>
+    </div>
+    <div class="os-x"></div>
+    <div class="os-y"></div>
+    <div class="os-z"></div>
+    
+    <div class="hl-1"></div>
+    <div class="hl-2"></div>
+    <div class="hl-3"></div>
+    <div class="hl-4"></div>
+    
+    <div class="vl-1"></div>
+    <div class="vl-2"></div>
+    <div class="vl-3"></div>
+    <div class="vl-4"></div>
+    
+    <div class="ml-1"></div>
+    <div class="ml-2"></div>
+    <div class="ml-3"></div>
+    <div class="ml-4"></div>
+    
+    <div class="orbit">
+      <div class="wrapper--orbit">
+        <div class="line-x" style="display: none"></div>
+        <div class="line-y" style="display: none"></div>
+      </div>
+    </div>
+  </body>
+</html>

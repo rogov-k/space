@@ -1,0 +1,257 @@
+/*
+ * Base colors:
+ * 
+ * White:     #ffffff;
+ * Grey:      #f7f7f7;
+ * Font-grey: rgba(0, 0, 0, .6);
+ * Red:       #f26363;
+ */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&subset=cyrillic');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&subset=cyrillic');
+@import url('https://fonts.googleapis.com/css?family=Nunito:300');
+
+* {
+  outline: none;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: #f7f7f7;
+  height: 100%;
+  margin: 0;
+}
+
+.font {
+  line-height: 1.6;
+  font-size: 16px;
+  font-weight: 300;
+  font-family: 'Roboto', sans-serif;
+  color: rgba(0, 0, 0, .6);
+}
+
+.block {
+  background-color: #fff;
+  box-sizing: border-box;
+  max-width: 560px;
+  margin: 0 auto 16px auto;
+  padding: 16px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .04);
+  border: 1px solid rgba(0, 0, 0, .09);
+  border-radius: 3px;
+  font-size: 0;
+}
+
+.block:empty {
+  display: none;
+}
+
+h2 {
+  font-size: 20px;
+  margin: .25em 0 .75em 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.main {
+	padding: 70px 1em 2.5em 1em;
+  min-height: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.header {
+  width: 100%;
+  height: 54px;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: auto;
+  padding: 0 1em;
+  box-sizing: border-box;
+  box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .15);
+  z-index: 10002;
+}
+
+.header--wrapper {
+  max-width: 560px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.header--logo {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 54px;
+	display: inline-block;
+  text-decoration: none;
+  color: rgba(0, 0, 0, .6);
+  margin-right: 16px;
+  font-family: 'Nunito', sans-serif;
+}
+
+.header--logo span {
+  color: #f26363;
+}
+
+.block--form {
+  position: relative;
+  align-self: center;
+  width: 250px;
+}
+
+.block--form.focus .tips-list {
+  display: block;
+}
+
+.block--form form {
+  line-height: 0;
+  color: rgba(0, 0, 0, .6);
+  border: 1px solid rgba(0, 0, 0, .09);
+  border-radius: 5px;
+}
+
+.block--form.focus.tips form {
+  border-bottom: 0;
+  border-radius: 5px 5px 0 0;
+}
+
+.block--form form input {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 300;
+  font-family: 'Roboto', sans-serif;
+  color: rgba(0, 0, 0, .6);
+}
+
+.block--form form .input__text {
+  padding: .5em 1em;
+  border: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background: transparent;
+  max-width: calc(100% - 74px);
+}
+
+.block--form.error .tips-list,
+.block--form.error form{
+  border-color: #f26363;
+}
+
+.block--form form .input__text::placeholder {
+  color: rgba(0, 0, 0, .4);
+  font-size: 14px;
+}
+
+.block--form form .button__reset,
+.block--form form .button__send {
+  height: 35px;
+  width: 35px;
+  border: 0;
+  padding: 0;
+  background-size: 20px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  color: transparent;
+}
+
+.block--form form .button__reset:hover,
+.block--form form .button__send:hover {
+  cursor: pointer;
+}
+
+.block--form form .button__send {
+  float: right;
+  background-image: url(../img/search.svg);
+}
+
+.block--form form .button__reset {
+  display: none;
+  background-image: url(../img/delete.svg);
+}
+
+.block--form .tips-list:empty {
+  display: none;
+}
+
+.block--form .tips-list {
+  display: none;
+  width: 100%;
+  padding: 8px 16px;
+  background-color: #ffffff;
+  position: absolute;
+  font-size: 14px;
+  border: 1px solid rgba(0, 0, 0, .09);
+  color: rgba(0, 0, 0, .4);
+  border-top: 0;
+  border-radius: 0 0 5px 5px;
+  box-sizing: border-box;
+}
+
+.tip {
+  cursor: pointer;
+}
+
+.tip:hover {
+  color: rgba(0, 0, 0, .6);
+}
+
+.tip:hover span {
+  color: #f26363;
+}
+
+.tip span {
+  display: inline-block;
+  width: 45px;
+}
+
+.info-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.info--item {
+	width: 255px;
+  margin: 0 0 .25em 0;
+}
+
+.block--info__hover .info--item:hover *,
+.block--info__hover .info--item:hover {  
+  cursor: pointer;
+  color: #f26363; 
+}
+
+.block--info label {
+  font-weight: 400;
+}
+
+.block--info span {
+  float: right;
+}
+
+.footer {
+  position: absolute;
+  top: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.footer--text {
+  text-align: center;
+  padding: 6px;
+  font-size: 14px;
+}
+
+.footer--text a {
+  color: #f26363;
+  text-decoration: none;
+}
