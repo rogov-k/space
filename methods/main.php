@@ -1,12 +1,12 @@
 <?php
 
 function getDBO() {
-  $dbname   = 'files23';
-	$username = 'files23';
-	$password = 'd62EqOeQ';
-	$dbo = new PDO('mysql:host=localhost;dbname=' . $dbname, $username, $password);
-  $dbo->exec('SET NAMES "utf8";');
-  return $dbo;
+$dbname = 'space';
+$username = 'admin';
+$password = '38q8jd9f';
+$hosts = 'db';
+$db = new PDO('mysql:host=' . $hosts . ';dbname=' . $dbname, $username, $password);
+$db->exec('SET NAMES "utf8";');
 }
 
 function up(&$a) {
