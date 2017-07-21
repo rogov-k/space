@@ -3,10 +3,10 @@
 function info($id) {
   $response = [];
   $dbo = getDBO();
-  $sql = $dbo->prepare('SELECT * FROM `satellites` as `s`, `satellite_params` as `p` WHERE `s`.`id` = :id AND `p`.`satellite_id` = :id AND `p`.`epoch` = (SELECT MAX(`satellite_params`.`epoch`) FROM `satellite_params` WHERE `satellite_params`.`satellite_id` = :id) LIMIT 1');
+  $sql = $dbo->prepare('SELECT * FROM `space`.`satellites` as `s`, `space`.`satellite_params` as `p` WHERE `s`.`id` = :id AND `p`.`satellite_id` = :id AND `p`.`epoch` = (SELECT MAX(`space`.`satellite_params`.`epoch`) FROM `space`.`satellite_params` WHERE `space`.`satellite_params`.`satellite_id` = :id) LIMIT 1');
   $sql->execute([':id' => $id]);
   $object = $sql->fetch();
-  $country = $dbo->prepare('SELECT `name` FROM `countries` WHERE `id` = :id;');
+  $country = $dbo->prepare('SELECT `name` FROM `space`.`countries` WHERE `id` = :id;');
   $country->execute([':id' => $object['country_id']]);
   foreach ($country as $i) {
     $object['country_id'] = $i['name'];
@@ -25,7 +25,7 @@ function info($id) {
     $response['answer']['text'] = '<div class="block"><span class="font">Object with NORAD ‘' . $_POST['text'] . '’ was not found.</span></div>';
   }
   $json = json_encode($response);
-	echo $json;
+  echo $json;
 }
 
 function grafic($grafic, $id) {
@@ -55,12 +55,11 @@ function query($query) {
   $dbo = getDBO();
   $sql = $dbo->prepare('SELECT `id`, `name` FROM `satellites` WHERE `id` LIKE :query ORDER BY `id` ASC LIMIT 5');
   $sql->execute([':query' => '%' . $query . '%']);
-  
   foreach ($sql as $key =>$row){
     $data[$key]['id'] = $row['id'];
     $data[$key]['name'] = $row['name'];
   }
-	ob_start();
+  ob_start();
   include '../template/tips.tpl.php';
   $answer = ob_get_contents();
   ob_end_clean();

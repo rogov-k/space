@@ -1,25 +1,28 @@
 <?php
 
 function getDBO() {
-$dbname = 'space';
-$username = 'admin';
-$password = '38q8jd9f';
-$hosts = 'db';
-$db = new PDO('mysql:host=' . $hosts . ';dbname=' . $dbname, $username, $password);
-$db->exec('SET NAMES "utf8";');
+    $dbname = 'space';
+    $username = 'admin';
+    $password = '38q8jd9f';
+    $hosts = 'mysql';
+
+    $db = new PDO('mysql:host=' . $hosts . ';port=3306;dbname=' . $dbname, $username, $password);
+    $db->exec('SET NAMES "utf8";');
+
+    return $db;
 }
 
 function up(&$a) {
   if (isset($a)) {
     $a++;
   } else {
-  	$a = 1;
+    $a = 1;
   }
 }
 
 function getNumber($a) {
   $a = preg_replace("/(\-|\+)?[0-9]{2,}/", "$0e", $a);
-	$a = number_format($a, 8);
+  $a = number_format($a, 8);
   return $a;
 }
 
